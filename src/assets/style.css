@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    font-family: Poppins, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    outline: none;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    font-size: 20px;
+    background-color: #e6ffe0;
+    overflow: hidden scroll;
+}
+
+img {
+    max-width: 100%;
+}
+
+header,
+footer {
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    background: none;
+    border: 0;
+}
+
+#app {
+    display: grid;
+    grid-template-rows: 10vh 1fr 10vh;
+}
+
+
+*::-webkit-scrollbar {
+    width: 1.2em;
+}
+
+*::-webkit-scrollbar-track {
+    /*background-color: #262626;*/
+    background-image: linear-gradient(to right, #262626 47%, #939393 48% 52%, #262626 53%);
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: rgba(225, 72, 72, 0.88);
+    height: 3.3em;
+    background-image:
+linear-gradient(to right, #262626 8%, #26262600 12% 88%, #262626 92%),
+            linear-gradient(to bottom,
+            #E14848 23%,
+            #2354648C 26% 30%,
+            #E14848 34% 66%,
+            #E1484800 70%,
+            #2354648C 71% 80%,
+            #E14848 82% );
+
+}

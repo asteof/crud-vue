@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header></Header>
+  <Content></Content>
+  <DeleteModal
+    v-show="this.$store.state.showDeleteModal"/>
+  <Footer></Footer>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import Content from './components/Content.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import DeleteModal from './components/Content/Modals/DeleteModal.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Header,
+    Content,
+    Footer,
+    DeleteModal,
+  },
+  data() {
+    return {
+      // showEditModal: this.$store.showEditModal,
+      // showDeleteModal: this.$store.showDeleteModal,
+    };
   },
 };
+
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+//#app {
+//
+//  text-align: center;
+//  color: #2c3e50;
+//  margin-top: 60px;
+//}
 </style>
