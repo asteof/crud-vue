@@ -2,7 +2,7 @@
   <div :class="$style.carListWrapper">
     <h4>Available cars</h4>
     <div>
-      <CarRow v-for="vehicle in vehicles"
+      <CarRow v-for="vehicle in this.$store.state.vehicles"
               :key="vehicle.id"
               :vehicle=vehicle></CarRow>
     </div>
@@ -10,10 +10,7 @@
 </template>
 
 <script>
-import axios from 'axios';
 import CarRow from './CarList/CarRow.vue';
-
-const url = 'http://localhost:3000/vehicles';
 
 export default {
   name: 'CarList',
@@ -24,21 +21,34 @@ export default {
     this.getData();
   },
   data() {
-    return {
-      vehicles: [],
-    };
+    return {};
   },
-
+  computed: {
+    // isCarListModified() {
+    //   return this.$store.getters.getVehiclesLength;
+    // }
+  },
   methods: {
     getData() {
-      axios.get(url)
-        .then(r => {
-          this.vehicles = r.data;
-          // console.log(this.vehicles);
-        })
-        .catch(console.log);
+      this.$store.dispatch('getData');
     },
   },
+  watch: {
+    // isCarListModified(newLength, oldLength) {
+    //   if (newLength !== oldLength) {
+    //     console.log(newLength, oldLength);
+    //     console.log(this.$store.getters.getVehiclesLength);
+    //   }
+    // },
+
+    /** ??
+    // eslint-disable-next-line
+    '$store.state.vehicles.length': function () {
+      console.log(this.$store.state.vehicles.length);
+      // this.getData();
+    }
+    /* */
+  }
 };
 </script>
 

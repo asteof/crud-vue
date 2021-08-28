@@ -39,7 +39,7 @@
       </div>
     </section>
 
-    <CarControls/>
+    <CarControls :vehicle="vehicle"/>
   </div>
 
 </template>
@@ -52,7 +52,6 @@ export default {
   components: {
     CarControls,
   },
-
   props: {
     vehicle: Object
   },

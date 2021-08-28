@@ -6,10 +6,10 @@
         <img src="../../../assets/close.svg" alt="X">
       </button>
       <p>Do you really want to delete this car?</p>
-      <p :class="$style.carName">Porsche 911</p>
+      <p :class="$style.carName">{{ this.$store.state.vehicleToDelete.vehicleFullName }}</p>
       <div :class="$style.submitBtnWrap">
         <button @click="closeDeleteModal">Cancel</button>
-        <button>Delete</button>
+        <button @click="deleteVehicle">Delete</button>
       </div>
     </div>
 
@@ -18,16 +18,32 @@
 </template>
 
 <script>
+import axios from 'axios';
 import ModalBackground from './ModalBackground.vue';
+import { API_PATH } from '../../../utils/constants';
 
 export default {
   name: 'DeleteModal',
   components: {
     ModalBackground
   },
+  data() {
+    return {};
+  },
   methods: {
     closeDeleteModal() {
       this.$store.commit('toggleDelete');
+    },
+    deleteVehicle() {
+      const url = `${API_PATH}/vehicles/${this.$store.state.vehicleToDelete.id}`;
+      axios.delete(url)
+        .then(r => {
+          console.log(r);
+          this.$store.dispatch('getData');
+        })
+        .catch(console.log);
+
+      this.closeDeleteModal();
     },
   },
 };
@@ -70,11 +86,11 @@ export default {
   padding: 0.4em 1.8em;
 }
 
-.submitBtnWrap button:hover{
+.submitBtnWrap button:hover {
   background-color: #26262640;
 }
 
-.submitBtnWrap button:active{
+.submitBtnWrap button:active {
   background-color: #26262620;
 }
 

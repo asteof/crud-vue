@@ -5,6 +5,11 @@
 npm install
 ```
 
+### Run JSON server
+```
+json-server db.json -w
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -24,6 +29,3 @@ npm run test:unit
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

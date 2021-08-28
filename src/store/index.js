@@ -1,23 +1,49 @@
 import { createStore } from 'vuex';
+import axios from 'axios';
+import { API_PATH } from '../utils/constants';
 
 export default createStore({
   state: {
+    vehicles: [],
     showEditModal: false,
     showDeleteModal: false,
-    carToDelete: 0,
+    vehicleToDelete: {
+      id: 0,
+      vehicleFullName: ''
+    },
+
   },
-  getters: {},
+  getters: {
+    getVehiclesLength(state) {
+      return state.vehicles.length;
+    }
+  },
   mutations: {
+    getData(state) {
+      const url = `${API_PATH}/vehicles`;
+      axios.get(url)
+        .then(r => {
+          state.vehicles = r.data;
+        })
+        .catch(err => console.log('getData', err));
+    },
     toggleEdit: (state) => {
       state.showEditModal = !state.showEditModal;
     },
     toggleDelete: (state) => {
       state.showDeleteModal = !state.showDeleteModal;
     },
-    setCarToDelete: (state, payload) => {
-      state.carToDelete = payload;
-    },
+    setVehicleToDelete: (state, payload) => {
+      state.vehicleToDelete.id = payload.id;
+      state.vehicleToDelete.vehicleFullName = payload.vehicleFullName;
+    }
   },
-  actions: {},
+  actions: {
+    // async ??
+    getData: ({ commit }) => {
+      commit('getData');
+    }
+
+  },
   modules: {},
 });
