@@ -10,31 +10,26 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapActions } from 'vuex';
 
 export default {
-  name: 'CarControls',
+  name: 'VehicleControls',
   props: {
     vehicle: Object
   },
   methods: {
-    ...mapMutations(['toggleEdit', 'toggleDelete', 'setVehicleToDelete']),
+    ...mapMutations(['toggleEdit', 'toggleDelete']),
+    ...mapActions(['setVehicleToModify']),
+
     openEditModal() {
+      this.setVehicleToModify(this.vehicle);
       this.toggleEdit();
     },
     openDeleteModal() {
+      this.setVehicleToModify(this.vehicle);
       this.toggleDelete();
-      this.setVehicleToDelete({
-        id: this.vehicle.id,
-        vehicleFullName: this.vehicleFullName
-      });
     },
   },
-  computed: {
-    vehicleFullName() {
-      return `${this.vehicle.manufacturer} ${this.vehicle.model}`;
-    }
-  }
 };
 </script>
 

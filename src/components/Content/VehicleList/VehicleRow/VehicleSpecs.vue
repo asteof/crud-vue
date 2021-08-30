@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.carSpecs">
+  <div :class="$style.VehicleSpecs">
     <section>
       <p>Specs</p>
       <div>Model year:</div>
@@ -18,19 +18,19 @@
       <div :class="$style.countryCode">
         {{ vehicle.country_code }}
         <img :src="`https://www.countryflags.io/${vehicle.country_code}/flat/64.png`"
-             alt="vehicle.country_code">
+             :alt="vehicle.country_code">
       </div>
       <div>Dealership:</div>
       <div>{{ vehicle.manufacturer }} {{ vehicle.country_code }}</div>
       <div>VIN:</div>
       <div :class="$style.copyItem">
         {{ vehicle.vin }}
-        <img :class="$style.icon" src="../../../../assets/copy.svg" alt="Copy">
+        <img :class="$style.icon" src="../../../../assets/copy.svg" alt="Copy" title="Copy">
       </div>
       <div>Registration plate:</div>
       <div :class="$style.copyItem">
         {{ vehicle.registration_plate }}
-        <img :class="$style.icon" src="../../../../assets/copy.svg" alt="Copy">
+        <img :class="$style.icon" src="../../../../assets/copy.svg" alt="Copy" title="Copy">
       </div>
       <div>Color:</div>
       <div :class="$style.carColor">
@@ -39,18 +39,18 @@
       </div>
     </section>
 
-    <CarControls :vehicle="vehicle"/>
+    <VehicleControls :vehicle="vehicle"/>
   </div>
 
 </template>
 
 <script>
-import CarControls from './CarControls.vue';
+import VehicleControls from './VehicleControls.vue';
 
 export default {
-  name: 'CarSpecs',
+  name: 'VehicleSpecs',
   components: {
-    CarControls,
+    VehicleControls,
   },
   props: {
     vehicle: Object
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style module>
-.carSpecs {
+.VehicleSpecs {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -71,7 +71,7 @@ export default {
   background-color: #363636da;
 }
 
-.carSpecs section {
+.VehicleSpecs section {
   display: grid;
   grid-template-columns: 1fr 0fr;
   column-gap: 3em;
@@ -79,24 +79,24 @@ export default {
   height: 100%;
 }
 
-.carSpecs section p {
+.VehicleSpecs section p {
   font-size: 1.1em;
   font-weight: 600;
   border-bottom: 2px solid;
   border-image: linear-gradient(to right, #dddddd 60%, #dddddd00) 1;
 }
 
-.carSpecs section div:nth-of-type(n) {
+.VehicleSpecs section div:nth-of-type(n) {
   grid-column: 1/2;
 }
 
-.carSpecs section div:nth-of-type(2n) {
+.VehicleSpecs section div:nth-of-type(2n) {
   grid-column: 2/3;
   display: flex;
   justify-content: flex-end;
 }
 
-.carSpecs section div {
+.VehicleSpecs section div {
   display: flex;
   justify-content: space-between;
   line-height: 1.8;
@@ -118,7 +118,6 @@ export default {
 .carColor div {
   width: 1em;
   height: 1em;
-  /*background-color: white;*/
   margin: 0 0 0 0.5em;
   border: 2px solid #000000;
   border-radius: 4px;

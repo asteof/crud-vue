@@ -1,20 +1,20 @@
 <template>
   <div :class="$style.row">
-    <CarView :image-link="vehicle.image_link"
-             :vehicle-full-name="vehicleFullName"/>
-    <CarSpecs :vehicle="vehicle" @openDelete="openDelete"/>
+    <VehicleAppearance :image-link="vehicle.image_link"
+                       :vehicle-full-name="vehicleFullName"/>
+    <VehicleSpecs :vehicle="vehicle" @openDelete="openDelete"/>
   </div>
 </template>
 
 <script>
-import CarView from './CarRow/CarView.vue';
-import CarSpecs from './CarRow/CarSpecs.vue';
+import VehicleAppearance from './VehicleRow/VehicleAppearance.vue';
+import VehicleSpecs from './VehicleRow/VehicleSpecs.vue';
 
 export default {
-  name: 'CarRow',
+  name: 'VehicleRow',
   components: {
-    CarView,
-    CarSpecs,
+    VehicleAppearance,
+    VehicleSpecs,
   },
   methods: {
     openDelete() {
@@ -42,5 +42,9 @@ export default {
   color: #dddddd;
   margin: 4em 0;
   padding: 1.4em;
+}
+
+.row:first-child {
+  margin: 2em 0 4em 0;
 }
 </style>

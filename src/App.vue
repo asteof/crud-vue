@@ -1,8 +1,10 @@
 <template>
   <Header></Header>
   <Content></Content>
-  <DeleteModal
-    v-show="this.$store.state.showDeleteModal"/>
+
+  <AddVehicleModal v-show="this.$store.state.showAddModal"/>
+  <EditVehicleModal v-show="this.$store.state.showEditModal"/>
+  <DeleteVehicleModal v-show="this.$store.state.showDeleteModal"/>
   <Footer></Footer>
 </template>
 
@@ -10,7 +12,9 @@
 import Content from './components/Content.vue';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-import DeleteModal from './components/Content/Modals/DeleteModal.vue';
+import AddVehicleModal from './components/Content/Modals/AddVehicleModal.vue';
+import EditVehicleModal from './components/Content/Modals/EditVehicleModal.vue';
+import DeleteVehicleModal from './components/Content/Modals/DeleteVehicleModal.vue';
 
 export default {
   name: 'App',
@@ -18,13 +22,9 @@ export default {
     Header,
     Content,
     Footer,
-    DeleteModal,
-  },
-  data() {
-    return {
-      // showEditModal: this.$store.showEditModal,
-      // showDeleteModal: this.$store.showDeleteModal,
-    };
+    AddVehicleModal,
+    EditVehicleModal,
+    DeleteVehicleModal,
   },
 };
 

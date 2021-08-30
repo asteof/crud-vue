@@ -1,21 +1,21 @@
 <template>
   <div :class="$style.carListWrapper">
-    <h4>Available cars</h4>
+    <h2>AVAILABLE CARS</h2>
     <div>
-      <CarRow v-for="vehicle in this.$store.state.vehicles"
+      <VehicleRow v-for="vehicle in this.$store.state.vehicles"
               :key="vehicle.id"
-              :vehicle=vehicle></CarRow>
+              :vehicle=vehicle></VehicleRow>
     </div>
   </div>
 </template>
 
 <script>
-import CarRow from './CarList/CarRow.vue';
+import VehicleRow from './VehicleList/VehicleRow.vue';
 
 export default {
-  name: 'CarList',
+  name: 'VehicleList',
   components: {
-    CarRow
+    VehicleRow
   },
   created() {
     this.getData();
@@ -58,7 +58,7 @@ export default {
   background-color: #b7ff67;
 }
 
-.carListWrapper h4 {
+.carListWrapper h2 {
   text-align: center;
 }
 </style>

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'CarView',
+  name: 'VehicleAppearance',
   props: {
     imageLink: String,
     vehicleFullName: String,
