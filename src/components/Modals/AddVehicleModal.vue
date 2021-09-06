@@ -18,7 +18,8 @@
 
 <script>
 import axios from 'axios';
-import { API_PATH } from '../../../utils/constants';
+import { API_PATH } from '../../utils/constants';
+
 import VehicleDataForm from './Elements/VehicleDataForm.vue';
 import SubmitButtons from './Elements/SubmitButtons.vue';
 import CloseButton from './Elements/CloseButton.vue';
@@ -30,7 +31,7 @@ export default {
     VehicleDataForm,
     SubmitButtons,
     CloseButton,
-    ModalBackground
+    ModalBackground,
   },
   data() {
     return {
@@ -38,32 +39,40 @@ export default {
         createdAt: '',
         manufacturer: '',
         model: '',
-        fuel_type: '',
-        engine_displacement: '',
-        transmission_type: '',
-        model_year: '',
+        fuelType: '',
+        engineDisplacement: '',
+        transmissionType: '',
+        modelYear: '',
         vin: '',
-        country_code: '',
-        registration_plate: '',
+        countryCode: '',
+        registrationPlate: '',
         color: '',
-        image_link: ''
-        // id": "65"
-      }
+        imageLink: '',
+        id: 0,
+      },
     };
   },
   methods: {
     addVehicle() {
+      this.formData.createdAt = new Date().toISOString();
+      this.formData.id = this.$store.state.lastVehicleId + 1;
+
       axios.post(API_PATH, this.formData)
         .then(() => {
           this.closeAddModal();
           this.$store.dispatch('getData');
+          this.$store.commit('showSuccess',
+            'Vehicle successfully added!');
         })
-        .catch(console.log);
+        .catch(() => {
+          this.$store.commit('showError',
+            'There was an error adding vehicle. Please try again later');
+        });
     },
     closeAddModal() {
       this.$store.commit('toggleAdd');
-    }
-  }
+    },
+  },
 };
 </script>
 
