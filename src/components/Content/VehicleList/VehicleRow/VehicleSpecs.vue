@@ -2,26 +2,28 @@
   <div :class="$style.VehicleSpecs">
     <section>
       <p>Specs</p>
+      <div>Model:</div>
+      <div :class="$style.model">{{ vehicle.model }}</div>
       <div>Model year:</div>
-      <div>{{ vehicle.model_year }}</div>
+      <div>{{ vehicle.modelYear }}</div>
       <div>Fuel type:</div>
-      <div>{{ vehicle.fuel_type }}</div>
+      <div>{{ vehicle.fuelType }}</div>
       <div>Engine displacement:</div>
-      <div>{{ vehicle.engine_displacement }}</div>
+      <div>{{ vehicle.engineDisplacement }}</div>
       <div>Transmission type:</div>
-      <div>{{ vehicle.transmission_type }}</div>
+      <div>{{ vehicle.transmissionType }}</div>
     </section>
 
     <section >
       <p>Legal info</p>
       <div>Country code:</div>
       <div :class="$style.countryCode">
-        {{ vehicle.country_code }}
-        <img :src="`https://www.countryflags.io/${vehicle.country_code}/flat/64.png`"
-             :alt="vehicle.country_code">
+        {{ vehicle.countryCode }}
+        <img :src="`https://www.countryflags.io/${vehicle.countryCode}/flat/64.png`"
+             :alt="vehicle.countryCode">
       </div>
       <div>Dealership:</div>
-      <div>{{ vehicle.manufacturer }} {{ vehicle.country_code }}</div>
+      <div>{{ vehicle.manufacturer }} {{ vehicle.countryCode }}</div>
       <div>VIN:</div>
       <div :class="$style.copyItem">
         {{ vehicle.vin }}
@@ -29,7 +31,7 @@
       </div>
       <div>Registration plate:</div>
       <div :class="$style.copyItem">
-        {{ vehicle.registration_plate }}
+        {{ vehicle.registrationPlate }}
         <img :class="$style.icon" src="../../../../assets/copy.svg" alt="Copy" title="Copy">
       </div>
       <div>Color:</div>
@@ -53,7 +55,7 @@ export default {
     VehicleControls,
   },
   props: {
-    vehicle: Object
+    vehicle: Object,
   },
 };
 </script>
@@ -99,7 +101,8 @@ export default {
 .VehicleSpecs section div {
   display: flex;
   justify-content: space-between;
-  line-height: 1.8;
+  line-height: 1.8em;
+  height: 1.8em;
 }
 
 .countryCode,
@@ -115,7 +118,12 @@ export default {
   margin: 0 0 0 0.5em;
 }
 
-.carColor div {
+.model {
+  width: 6em;
+  overflow: hidden;
+}
+
+.VehicleSpecs .carColor div {
   width: 1em;
   height: 1em;
   margin: 0 0 0 0.5em;

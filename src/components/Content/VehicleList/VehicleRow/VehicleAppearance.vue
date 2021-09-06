@@ -5,6 +5,7 @@
       :src="imageLink"
       :alt="vehicleFullName"
       :title="vehicleFullName">
+    <div :class="$style.timeAdd">{{ timeAdd }}</div>
   </div>
 </template>
 
@@ -13,8 +14,9 @@ export default {
   name: 'VehicleAppearance',
   props: {
     imageLink: String,
+    timeAdd: String,
     vehicleFullName: String,
-  }
+  },
 };
 </script>
 
@@ -37,6 +39,16 @@ export default {
   padding: 0.5em 1em;
   border-radius: 16px;
   z-index: 2;
+}
+
+.timeAdd {
+  position: absolute;
+  font-size: 0.6em;
+  left: 0.5em;
+  bottom: 2em;
+  padding: 0.4em 0.8em;
+  background-color: #00000060;
+  border-radius: 16px;
 }
 
 .carView img {

@@ -45,13 +45,18 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "comma-dangle": "off",
+      "comma-dangle": "warn",
       "no-trailing-spaces": "off",
       "no-console": "off",
       "arrow-parens": "off",
       "max-len": 0,
       "no-multiple-empty-lines": 0,
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": 0,
+      "arrow-body-style": 0,
+      "camelcase": "error",
+      "no-param-reassign": 0,
+      "no-return-assign": 0,
+      "no-unused-expressions": 0
     },
     "overrides": [
       {

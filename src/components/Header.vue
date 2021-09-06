@@ -18,6 +18,7 @@ export default {
 .logoWrap {
   margin: 0 4em 0 1em;
   height: calc(20vh - 1.6em);
+  background-image: radial-gradient(#5d8a27, #b7ff67 69%);
 }
 
 .logo {

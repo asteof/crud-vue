@@ -1,7 +1,7 @@
 <template>
   <button :class="$style.closeBtn"
           @click="closeModal">
-    <img src="../../../../assets/close.svg" alt="X">
+    <img src="../../../assets/close.svg" alt="X">
   </button>
 </template>
 
@@ -9,8 +9,8 @@
 export default {
   name: 'CloseBtn',
   props: {
-    closeModal: Function
-  }
+    closeModal: Function,
+  },
 };
 </script>
 

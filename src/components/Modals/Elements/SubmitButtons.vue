@@ -17,8 +17,8 @@ export default {
       type: Function,
       required: true,
     },
-    submitMethod: Function
-  }
+    submitMethod: Function,
+  },
 };
 </script>
 
